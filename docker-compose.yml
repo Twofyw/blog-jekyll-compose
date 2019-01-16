@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+    jekyll:
+        image: jekyll/builder
+        volumes:
+            - ./jekyll/site:/srv/jekyll
+            - ./jekyll/bundle:/usr/local/bundle
+
+        command: jekyll build . --watch
+
+        environment:
+            - JEKYLL_UID=50011
+
+    nginx:
+        image: nginx
+        ports:
+            - "9002:80"
+        volumes:
+            - ./jekyll/site/_site:/usr/share/nginx/html
+
