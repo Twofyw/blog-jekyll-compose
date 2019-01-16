@@ -7,10 +7,13 @@ services:
             - ./jekyll/site:/srv/jekyll
             - ./jekyll/bundle:/usr/local/bundle
 
-        command: jekyll build . --watch
+        command: >
+            sh -c "bundle update && bundle exec jekyll serve . --watch"
 
         environment:
             - JEKYLL_UID=50011
+            - HTTP_PROXY=http://172.17.0.1:8118 
+            - HTTPS_PROXY=http://172.17.0.1:8118
 
     nginx:
         image: nginx

@@ -1,0 +1,3 @@
+[submodule "twofyw.github.io"]
+	path = jekyll/site
+	url = git@github.com:Twofyw/twofyw.github.io.git
